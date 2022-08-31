@@ -13,7 +13,6 @@ fi
 apache_stat=$(service apache2 status)
 if [[ $apache_stat == *"active (running)"* ]]; then
   echo "Apache Service is running"
-  sudo systemctl status apache2 
 else
   echo "Apache Service is not running and starting it"
   sudo service apache2 start
@@ -27,7 +26,6 @@ echo "Creating a tar file: "
 tar cvf /tmp/${myname}-httpd-logs-${timestamp}.tar /var/log/apache2/*.log
 
 echo "Installing awscli dependencies:"
-sudo apt update  -y
 sudo apt --yes install awscli
 
 echo "Uploading to the S3 bucket"
